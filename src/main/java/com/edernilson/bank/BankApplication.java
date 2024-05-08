@@ -23,8 +23,8 @@ public class BankApplication {
     }
 
     @Bean
-    public TransferBalanceUseCase provideTransferBalanceUseCase(AccountRepository repository, UserRepository userRepository, ModelMapper modelMapper) {
-        return new TransferBalanceUseCase(repository, userRepository, modelMapper);
+    public TransferBalanceUseCase provideTransferBalanceUseCase(AccountRepository repository, UserRepository userRepository) {
+        return new TransferBalanceUseCase(repository, userRepository);
     }
 
 }

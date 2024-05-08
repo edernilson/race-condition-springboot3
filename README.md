@@ -1,4 +1,4 @@
-# Dealing with Race Condition in Spring Boot
+# Dealing with Race Condition in Spring Boot 3
 
 Based on the article by Ari Prayoga from [medium](https://medium.com/@ariprayoga007/dealing-with-race-condition-in-spring-boot-3c3fd615e35a) 
 and added some additional features like Hexagonal Architecture and tests with TestContainer. 

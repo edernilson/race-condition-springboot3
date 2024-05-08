@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,17 +22,18 @@ import com.edernilson.bank.domain.ports.UserRepository;
 public class TransferBalanceUseCase {
     private final AccountRepository repository;
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
 
-    public TransferBalanceUseCase(AccountRepository repository, UserRepository userRepository, ModelMapper modelMapper) {
+    public TransferBalanceUseCase(AccountRepository repository, UserRepository userRepository) {
         this.repository = repository;
         this.userRepository = userRepository;
-        this.modelMapper = modelMapper;
     }
 
     @Transactional
-    public List<GetAccountBalance> transferBalance(Long accountOrigId, Long accountDestId, Double value) {
+    public List<GetAccountBalance> transferBalance(Long accountOrigId, Long accountDestId, double value) {
         List<GetAccountBalance> result = new ArrayList<>();
+        if (value <= 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid value");
+        }
         AccountEntity accountOrig = repository.findById(accountOrigId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Origin account not found"));
         AccountEntity accountDest = repository.findById(accountDestId)
@@ -70,5 +70,5 @@ public class TransferBalanceUseCase {
         result.add(destBalance);
 
         return result;
-    };
+    }
 }
