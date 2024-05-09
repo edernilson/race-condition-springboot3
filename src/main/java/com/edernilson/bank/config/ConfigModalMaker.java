@@ -1,4 +1,4 @@
-package com.edernilson.bank;
+package com.edernilson.bank.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
