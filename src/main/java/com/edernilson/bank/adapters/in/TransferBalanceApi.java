@@ -15,6 +15,7 @@ import com.edernilson.bank.application.responses.GetAccountBalance;
  * @user: eder.nilson
  * @created: 08/05/2024, quarta-feira
  */
+//@Tag(name = "Accounts", description = "Transfer balance between accounts")
 @RestController
 @RequestMapping("/accounts")
 public record TransferBalanceApi(TransferBalanceUseCase useCase) {

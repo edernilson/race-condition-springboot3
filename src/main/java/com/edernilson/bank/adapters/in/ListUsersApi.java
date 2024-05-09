@@ -14,6 +14,7 @@ import com.edernilson.bank.application.responses.GetUsersResponse;
  * @user: eder.nilson
  * @created: 08/05/2024, quarta-feira
  */
+//@Tag(name = "Users", description = "List users")
 @RestController
 @RequestMapping("/users")
 public record ListUsersApi(ListUserUseCase useCase) {

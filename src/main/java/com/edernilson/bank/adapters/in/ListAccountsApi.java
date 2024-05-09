@@ -14,6 +14,7 @@ import com.edernilson.bank.application.responses.GetAccountResponse;
  * @user: eder.nilson
  * @created: 08/05/2024, quarta-feira
  */
+//@Tag(name = "Accounts", description = "List account")
 @RestController
 @RequestMapping("/accounts")
 public record ListAccountsApi(ListAccountUseCase useCase) {
