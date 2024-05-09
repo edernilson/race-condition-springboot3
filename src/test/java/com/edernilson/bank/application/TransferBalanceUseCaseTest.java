@@ -3,6 +3,7 @@ package com.edernilson.bank.application;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -49,5 +50,10 @@ class TransferBalanceUseCaseTest extends ContainerConfigTests {
         String actualMessage = exception.getMessage();
 
         assertTrue(expectedMessage.contains(actualMessage));
+    }
+
+    @RepeatedTest(1000)
+    void shouldTransferBalanceSuccessfullWithRepeatedTimes() {
+        transferBalanceUseCase.transferBalance(1L, 3L, 1.0);
     }
 }

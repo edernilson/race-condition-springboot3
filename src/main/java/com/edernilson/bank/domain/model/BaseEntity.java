@@ -11,6 +11,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -46,5 +47,9 @@ public class BaseEntity {
     @Column(name = "updated_by", nullable = false)
     @LastModifiedBy
     private String updatedBy;
+
+    @Column(name = "version")
+    @Version
+    private Long version;
 
 }

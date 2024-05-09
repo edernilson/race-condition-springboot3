@@ -3,12 +3,14 @@ package com.edernilson.bank.adapters.out;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Repository;
 
 import com.edernilson.bank.domain.model.AccountEntity;
 import com.edernilson.bank.domain.ports.AccountRepository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
 
 /**
  * @author: github.com/edernilson
@@ -30,6 +32,7 @@ public class AccountJpaRepository implements AccountRepository {
                 .getResultList();
     }
 
+    @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
     @Override
     public Optional<AccountEntity> findById(Long id) {
         return Optional.ofNullable(entityManager.find(AccountEntity.class, id));
