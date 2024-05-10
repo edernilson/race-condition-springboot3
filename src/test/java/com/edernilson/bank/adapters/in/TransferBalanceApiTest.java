@@ -32,7 +32,9 @@ class TransferBalanceApiTest extends ContainerConfigTests {
     @Test
     void shouldTransferBalanceReturnSuccessFull() throws Exception{
         mvc.perform(MockMvcRequestBuilders
-                        .post("/accounts/transfer/{idAccountOrigin}/{idAccountDestiny}/{amount}", 1, 2, 100.0)
+                        .post("/accounts/transfer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"idAccountOrigin\": 1, \"idAccountDestiny\": 2, \"amount\": 100.0}")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
